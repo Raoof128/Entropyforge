@@ -1,0 +1,18 @@
+altgraph==0.17.5
+customtkinter==5.2.2
+darkdetect==0.8.0
+# Editable Git install with no remote (entropyforge==0.2.0)
+-e /Users/raoof.r12/Desktop/Raouf/new_Project/EntropyForge
+hypothesis==6.151.11
+iniconfig==2.3.0
+macholib==1.16.4
+packaging==26.0
+platformdirs==4.9.4
+pluggy==1.6.0
+Pygments==2.20.0
+pyinstaller==6.19.0
+pyinstaller-hooks-contrib==2026.4
+pytest==9.0.2
+ruff==0.15.9
+setuptools==82.0.1
+sortedcontainers==2.4.0

@@ -1,0 +1,6 @@
+# Runtime dependencies (see pyproject.toml). Prefer:
+#   pip install -e .
+# Reproducible installs: pip install -r requirements-lock.txt
+
+customtkinter>=5.2.0
+platformdirs>=4.0.0

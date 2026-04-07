@@ -1,0 +1,51 @@
+name: CI
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+    branches: [main, master]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ["3.11", "3.12"]
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -e ".[dev]"
+      - name: Ruff format
+        run: ruff format --check src tests
+      - name: Ruff lint
+        run: ruff check src tests
+      - name: Pytest with coverage
+        run: pytest tests/ -v --tb=short --cov=entropyforge --cov-report=term-missing --cov-report=xml
+
+  pyinstaller-onedir:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install project and PyInstaller
+        run: |
+          python -m pip install --upgrade pip
+          pip install -e ".[dev]"
+          pip install pyinstaller
+      - name: Build one-folder bundle
+        run: pyinstaller entropyforge_onedir.spec
+      - name: Upload dist folder
+        uses: actions/upload-artifact@v4
+        with:
+          name: entropyforge-onedir-linux
+          path: dist/EntropyForge
