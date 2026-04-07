@@ -1,9 +1,17 @@
 # Changelog
 
+## Raouf: 2026-04-07 — Canonical GitHub URLs (Raoof128)
+- **Date:** 2026-04-07 (Australia/Sydney)
+- **Scope:** Package metadata alignment with GitHub
+- **Summary:** Updated `[project.urls]` and changelog copy to use canonical `https://github.com/Raoof128/entropyforge` (matching the live remote).
+- **Files changed:** `pyproject.toml`, `AGENT.md`, `CHANGELOG.md`
+- **Verification:** `git push` to `origin main`
+- **Follow-ups:** None
+
 ## Raouf: 2026-04-07 — Remove Dependabot; publish to GitHub
 - **Date:** 2026-04-07 (Australia/Sydney)
 - **Scope:** Repository hosting
-- **Summary:** Removed GitHub Dependabot configuration; project URLs point at `https://github.com/raoof128/entropyforge`; `.hypothesis/` ignored; source published as a public repository under `raoof128`.
+- **Summary:** Removed GitHub Dependabot configuration; project URLs point at `https://github.com/Raoof128/entropyforge`; `.hypothesis/` ignored; source published as a public repository under `Raoof128`.
 - **Files changed:** `.github/dependabot.yml` (removed), `.gitignore`, `pyproject.toml`, `README.md`, `AGENT.md`, `CHANGELOG.md`
 - **Verification:** Remote push to `origin` on GitHub.
 - **Follow-ups:** None.

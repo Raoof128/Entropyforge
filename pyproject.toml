@@ -50,10 +50,10 @@ dev = [
 ]
 
 [project.urls]
-Homepage = "https://github.com/raoof128/entropyforge"
-Documentation = "https://github.com/raoof128/entropyforge#readme"
-Changelog = "https://github.com/raoof128/entropyforge/blob/main/CHANGELOG.md"
-Issues = "https://github.com/raoof128/entropyforge/issues"
+Homepage = "https://github.com/Raoof128/entropyforge"
+Documentation = "https://github.com/Raoof128/entropyforge#readme"
+Changelog = "https://github.com/Raoof128/entropyforge/blob/main/CHANGELOG.md"
+Issues = "https://github.com/Raoof128/entropyforge/issues"
 
 [project.scripts]
 entropyforge = "entropyforge.main:main"
