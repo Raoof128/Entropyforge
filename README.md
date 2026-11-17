@@ -6,9 +6,12 @@
 
 Desktop application for **cryptographically secure** passwords, hex keys, and uniform integers. Generation uses Python’s [`secrets`](https://docs.python.org/3/library/secrets.html) module (OS-backed CSPRNG), not the Mersenne Twister `random` module.
 
+**Status.** A small personal utility. The generation code is a thin layer over the standard library (`secrets.choice`, `secrets.token_hex`, `secrets.randbelow`) and is covered by 33 tests; the user interface is not covered by automated tests, and nothing here has had an independent security review. See [Limits](#limits).
+
 ## Contents
 
 - [Features](#features)
+- [Limits](#limits)
 - [Quick start](#quick-start)
 - [Documentation](#documentation)
 - [Development](#development)
@@ -27,10 +30,19 @@ Desktop application for **cryptographically secure** passwords, hex keys, and un
 - **Logging:** Warnings and errors to `entropyforge.log` beside settings (no secrets logged).
 - **Tests:** `pytest`, `ruff`, optional `hypothesis` property tests; GitHub Actions CI (lint, format, tests with coverage, PyInstaller onedir on Linux).
 
+## Limits
+
+- **Generated values are ordinary Python strings.** They cannot be wiped from memory, and they stay in the process until it exits.
+- **Clipboard auto-clear is best effort.** It clears the clipboard after the chosen delay if the app is still running. A clipboard manager or history that copied the value earlier keeps its copy, and nothing is cleared if the app is closed first.
+- **The entropy figure assumes the generator is uniform** (it is `log2` of the number of possible outputs). It says nothing about how the value is stored or used afterwards.
+- **Passwords are letters and digits only** (62 symbols, about 5.95 bits each), up to 4096 characters; hex keys up to 512 bytes.
+- The packaged builds in CI are unsigned.
+
 ## Quick start
 
 ```bash
-cd EntropyForge
+git clone https://github.com/Raoof128/Entropyforge.git
+cd Entropyforge
 python -m venv .venv
 source .venv/bin/activate   # Windows: .venv\Scripts\activate
 pip install -e ".[dev]"
@@ -95,7 +107,7 @@ See [docs/PACKAGING.md](docs/PACKAGING.md) for one-file vs one-folder, CI artifa
 ## Project layout
 
 ```text
-EntropyForge/
+Entropyforge/
 ├── pyproject.toml
 ├── requirements.txt
 ├── requirements-lock.txt
