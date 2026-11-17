@@ -1,5 +1,13 @@
 # Changelog
 
+## Raouf: 2026-11-17 — Status, limits and security contact
+- **Date:** 2026-11-17 (Australia/Sydney)
+- **Scope:** README accuracy, security contact, wording of earlier log entries
+- **Summary:** README gains a status line and a Limits section (strings cannot be wiped from memory, clipboard auto-clear is best effort, what the entropy figure means, the UI has no automated tests, no independent review) and real clone instructions (it said `cd EntropyForge` with no clone step; the repository is `Entropyforge`). `SECURITY.md` points to GitHub private vulnerability reporting, now enabled, instead of "email maintainers" with no address, and drops the response-time promise. Earlier log headings that called the project "portfolio-grade" and an audit "production" and "industry-facing" are reworded: they described intent, not anything measured.
+- **Files changed:** `README.md`, `SECURITY.md`, `AGENT.md`, `CHANGELOG.md`
+- **Verification:** `ruff format --check src tests`; `ruff check src tests`; `pytest tests/ --cov=entropyforge` → 33 passed, 91% coverage of the non-UI modules (Python 3.12, macOS). No code changed.
+- **Follow-ups:** UI tests; signed builds.
+
 ## Raouf: 2026-04-07 — Canonical GitHub URLs (Raoof128)
 - **Date:** 2026-04-07 (Australia/Sydney)
 - **Scope:** Package metadata alignment with GitHub
@@ -16,9 +24,9 @@
 - **Verification:** Remote push to `origin` on GitHub.
 - **Follow-ups:** None.
 
-## Raouf: 2026-04-07 — Production audit: docs, governance, tests, CI
+## Raouf: 2026-04-07 — Audit: docs, governance, tests, CI
 - **Date:** 2026-04-07 (Australia/Sydney)
-- **Scope:** Industry-facing audit — coverage threshold, config/main/logging tests, README and CI alignment
+- **Scope:** Audit — coverage threshold, config/main/logging tests, README and CI alignment
 - **Summary:** Added unit tests for `config` (including `config_directory`), `logging_config`, and `main` (success path and logged exception re-raise); CI runs Ruff format check, Ruff lint, and pytest with coverage; README expanded with documentation index, community links, quality gates, and placeholder repository URL note; documentation index links to `examples/`.
 - **Files changed:** `README.md`, `.github/workflows/ci.yml`, `docs/README.md`, `tests/test_config.py`, `tests/test_logging_config.py`, `tests/test_main.py`, `AGENT.md`, `CHANGELOG.md`
 - **Verification:** `ruff format --check src tests`; `ruff check src tests`; `pytest tests/ -v --cov=entropyforge` → 33 passed, coverage meets `fail_under` (88%).
@@ -57,7 +65,7 @@
 
 ## Raouf: 2026-04-07 — EntropyForge initial scaffold
 - **Date:** 2026-04-07 (Australia/Sydney)
-- **Scope:** Portfolio-grade CSPRNG desktop app (`EntropyForge/`)
+- **Scope:** CSPRNG desktop app (`EntropyForge/`)
 - **Summary:** Added `crypto_core` (stdlib `secrets` only), CustomTkinter `ui`, string keys in `strings.py`, `pytest` suite, `requirements.txt`, `.gitignore`, `README.md`, `git init` on `main`, and project `AGENT.md`.
 - **Files changed:** `AGENT.md`, `CHANGELOG.md`, `README.md`, `.gitignore`, `requirements.txt`, `src/__init__.py`, `src/main.py`, `src/ui.py`, `src/crypto_core.py`, `src/strings.py`, `tests/__init__.py`, `tests/test_crypto.py`
 - **Verification:** `.venv/bin/python -m pytest tests/ -v` → 14 passed
